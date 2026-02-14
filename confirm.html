@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Confirm Entry</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+    
+      color: white;
+
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .box {
+      max-width: 600px;
+      padding: 20px;
+    }
+
+    .big {
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    .countdown {
+      font-size: 64px;
+      margin-top: 20px;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 300px;
+      margin-top: 20px;
+      border-radius: 12px;
+    }
+
+  
+  </style>
+</head>
+
+<body>
+
+  <div class="confirmbox">
+     <img src="images/logo.png" class="logo">
+    <div id="screen"></div>
+    <br>
+    <button onclick="proceed()">Proceed to Draw</button>
+  </div>
+
+
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const giftNo = params.get("gift");
+    const couponNo = params.get("coupon");
+
+    const screen = document.getElementById("screen");
+    const drum = document.getElementById("drum");
+
+    let winnerData = null;
+
+    /* STEP 1 — Show coupon */
+    screen.innerHTML = `
+  <div class="big">
+    Coupon number entered for Gift ${giftNo} is
+    <span style="color:#6e3403">${couponNo}</span>
+  </div>
+`;
+
+
+
+
+    function proceed() {
+      window.location.href =
+        `reveal.html?gift=${giftNo}&coupon=${couponNo}`;
+    }
+  </script>
+
+</body>
+
+</html>
